@@ -1,0 +1,24 @@
+services:
+  api_gateway:
+    build: ./api-gateway
+    ports:
+      - "8008:8008"
+    volumes:
+      - ./api-gateway/src:/usr/src/app/src
+    command: pnpm start:dev
+    environment:
+      - PORT=8008
+  users_microservice:
+    build: ./users-mc
+    volumes:
+      - ./users-mc/src:/usr/src/app/src
+    command: pnpm start:dev
+  payments_microservice:
+    build: ./payments-mc
+    volumes:
+      - ./payments-mc/src:/usr/src/app/src
+    command: pnpm start:dev
+  nats:
+    image: nats
+    ports:
+      - 4222:4222
