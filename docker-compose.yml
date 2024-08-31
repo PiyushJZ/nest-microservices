@@ -22,3 +22,11 @@ services:
     image: nats
     ports:
       - 4222:4222
+  postgres_db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=piyush
+      - POSTGRES_DB=nestjs_db
+      - POSTGRES_PASSWORD=Passw0rd
